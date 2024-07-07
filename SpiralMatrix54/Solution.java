@@ -1,8 +1,9 @@
 package SpiralMatrix54;
 
+import utils.CollectionComparator;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class Solution {
     private record TestCase(int[][] matrix, List<Integer> expectedResult) {
@@ -15,7 +16,7 @@ public class Solution {
         );
 
         for (TestCase testCase : testCases) {
-            System.out.println(listEquals(spiralOrder(testCase.matrix), testCase.expectedResult));
+            System.out.println(CollectionComparator.equals(spiralOrder(testCase.matrix), testCase.expectedResult));
         }
     }
 
@@ -36,17 +37,5 @@ public class Solution {
         }
 
         spiralOrder(matrix, moves, n, m - 1, r, c, dc, -dr);
-    }
-
-    private static boolean listEquals(List<Integer> list1, List<Integer> list2) {
-        if (list1.size() != list2.size())
-            return false;
-
-        for (int i = 0; i < list1.size(); i++) {
-            if (!Objects.equals(list1.get(i), list2.get(i)))
-                return false;
-        }
-
-        return true;
     }
 }
