@@ -1,5 +1,7 @@
 package SetMatrixZeroes73;
 
+import utils.CollectionComparator;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -16,7 +18,7 @@ public class Solution {
 
         for (TestCase testCase : testCases) {
             setZeroes(testCase.matrix);
-            System.out.println(arrayEquals(testCase.matrix, testCase.expectedResult));
+            System.out.println(CollectionComparator.equals(testCase.matrix, testCase.expectedResult));
         }
     }
 
@@ -46,16 +48,5 @@ public class Solution {
     private static void setColZeroes(int[][] matrix, int col) {
         for (int i = 0; i < matrix.length; i++)
             matrix[i][col] = 0;
-    }
-
-    private static boolean arrayEquals(int[][] a, int[][] b) {
-        if (a.length != b.length || a[0].length != b[0].length)
-            return false;
-
-        for (int i = 0; i < a.length; i++)
-            for (int j = 0; j < a[i].length; j++)
-                if (a[i][j] != b[i][j]) return false;
-
-        return true;
     }
 }
